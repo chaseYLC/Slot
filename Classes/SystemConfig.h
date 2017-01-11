@@ -19,7 +19,7 @@ public:
     static void setOffset(const float heightOffset);
     static float getYPos(const float y);
     static float getXPos(const float x);
-    static cocos2d::CCSize getWinSize(void);
+    static cocos2d::Size getWinSize(void);
     static float relativePixel(const float p);
     static int getTTFSize(const int iosSize);
 public:
@@ -28,7 +28,7 @@ public:
     
     static float gScaleX;
     static float gScaleY;
-    static cocos2d::CCSize winSize;
+    static cocos2d::Size winSize;
     static float offset;
     static int isHd;
     

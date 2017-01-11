@@ -1,11 +1,3 @@
-//
-//  TargetDeviceUtils.cpp
-//  test
-//
-//  Created by jungho Yoo on 12. 10. 21..
-//  Copyright (c) 2012년 Nextail. All rights reserved.
-//
-
 #ifndef  _TARGET_DEVICE_UTILS_
 #define  _TARGET_DEVICE_UTILS_
 
@@ -40,9 +32,9 @@ public :
 
         
     // Indicates if the current platform is the BlackBerry PlayBook device
-    static inline bool isQNX() 
+    static inline bool isWin32() 
     { 
-        #if (CC_TARGET_PLATFORM == CC_PLATFORM_QNX) 
+        #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) 
             return true; 
         #else 
             return false; 
@@ -70,14 +62,14 @@ public :
 
     static inline bool enableRetinaDisplay(bool b, RelativeToType rType)
     {
-        cocos2d::CCSize screenSize = cocos2d::CCDirector::sharedDirector()->getWinSizeInPixels();        
+        cocos2d::Size screenSize = cocos2d::Director::getInstance()->getWinSizeInPixels();        
 //        float fFrameScale = 1;
 //        if( screenSize.width > 480 ) fFrameScale = 2;
 //        else fFrameScale = 1;
 //        
 //        cocos2d::CCSize WIREFRAME_DIMENSIONS = cocos2d::CCSizeMake(320*fFrameScale, 480*fFrameScale);
-        cocos2d::CCSize WIREFRAME_DIMENSIONS = cocos2d::CCSizeMake(640, 960);
-        cocos2d::CCSize frameSize;
+        cocos2d::Size WIREFRAME_DIMENSIONS = cocos2d::Size(640, 960);
+        cocos2d::Size frameSize;
         //Calculate ratios
 
 //        float widthRatio = screenSize.width/WIREFRAME_DIMENSIONS.width;
@@ -100,8 +92,11 @@ public :
                 break;
         }
         
-        cocos2d::CCEGLView::sharedOpenGLView()->setFrameSize(frameSize.width, frameSize.height);
-        cocos2d::CCEGLView::sharedOpenGLView()->setDesignResolutionSize(640, 960, kResolutionShowAll);
+	
+		cocos2d::Director::getInstance()->getOpenGLView()->setFrameSize(frameSize.width, frameSize.height);
+		cocos2d::Director::getInstance()->getOpenGLView()->setDesignResolutionSize(640, 960, ResolutionPolicy::SHOW_ALL);
+		/*cocos2d::GLView::sharedOpenGLView()->setFrameSize(frameSize.width, frameSize.height);
+		cocos2d::CCEGLView::sharedOpenGLView()->setDesignResolutionSize(640, 960, kResolutionShowAll);*/
         bRet = true;
 //        cocos2d::CCEGLView::sharedOpenGLView()->setFrameSize(640, 960);
 //        if( bestRation == 2 )
@@ -122,12 +117,12 @@ public :
     }
     
     // Gets the point in the screen relative to a fixed size wireframe design
-    static inline cocos2d::CCPoint relativeCCPointMake( float x, float y )
+    static inline cocos2d::Point relativeCCPointMake( float x, float y )
     {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS) 
-        return ccp(x, y);
+        return cocos2d::Vec2(x, y);
 #else 
-        return ccp(x*2, y*2);
+        return cocos2d::Vec2(x*2, y*2);
 #endif
     }
     

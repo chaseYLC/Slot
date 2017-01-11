@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "SystemConfig.h"
 
 USING_NS_CC;
 
@@ -72,6 +73,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     register_all_packages();
+
+
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+	SystemConfig::winSize = screenSize;
+#else
+	/*SystemConfig::winSize = winSize;*/
+	SystemConfig::winSize = frameSize;
+#endif
+
 
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
