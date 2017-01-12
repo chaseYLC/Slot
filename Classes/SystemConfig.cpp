@@ -48,7 +48,7 @@ float SystemConfig::relativePixel(const float p)
 
 	return p/2.0;
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
-	return p / 2.0;
+	return p;
 #else
 	return p/2.0;
 #endif

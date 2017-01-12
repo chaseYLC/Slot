@@ -1,10 +1,11 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "SystemConfig.h"
+#include "SCTitle.h"
 
 USING_NS_CC;
 
-int _gTest = 1;
+int _gTest = 0;
 
 Scene* HelloWorld::createScene()
 {
@@ -104,6 +105,23 @@ bool HelloWorld::init()
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
+	/*SND()->playBackgroundMusic(SoundPath::path(SoundPath::ST_BG_START), true);
+	SND()->setBackgroundMusicVolume(0.5);*/
+
+	if (_gTest)
+	{
+		//ClearClothesScene *gameTitleScene = ClearClothesScene::create();
+		//CCDirector::sharedDirector()->setDepthTest(true);
+		//CCDirector::sharedDirector()->replaceScene(gameTitleScene);
+	}
+	else
+	{
+		GameTitleScene *gameTitleScene = GameTitleScene::create();
+		Director::getInstance()->setDepthTest(true);
+		Director::getInstance()->replaceScene(gameTitleScene);
+	}
+	
+	
 	return;
 
     //Close the cocos2d-x game scene and quit the application
@@ -124,7 +142,7 @@ void HelloWorld::asyncResourceCallback(cocos2d::Ref *obj)
 	m_asyncLoader->removeFromParentAndCleanup(true);
 	Size winSize = SystemConfig::getWinSize();
 	Sprite *bg = Sprite::create("company_logo.png");
-	bg->setPosition(ccp(winSize.width / 2, winSize.height / 2));
+	bg->setPosition(cocos2d::Vec2(winSize.width / 2, winSize.height / 2));
 	//    SystemConfig::setPosition(480, 960, bg);
 	this->addChild(bg);
 
@@ -138,7 +156,7 @@ void HelloWorld::asyncResourceCallback(cocos2d::Ref *obj)
 		);
 	}
 	else {
-		actions = CCSequence::create(
+		actions = Sequence::create(
 			FadeIn::create(2),
 			FadeOut::create(1),
 			CallFuncN::create(this, SEL_CallFuncN(&HelloWorld::menuCloseCallback)),
@@ -147,4 +165,15 @@ void HelloWorld::asyncResourceCallback(cocos2d::Ref *obj)
 	}
 
 	bg->runAction(actions);
+}
+
+void HelloWorld::onEnter()
+{
+	Layer::onEnter();
+}
+
+void HelloWorld::onExit()
+{
+	Layer::onExit();
+	TextureCache::sharedTextureCache()->removeAllTextures();
 }

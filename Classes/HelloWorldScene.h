@@ -20,6 +20,9 @@ public:
 
 	void asyncResourceCallback(cocos2d::Ref *obj);
 	AsyncResourceLoader* m_asyncLoader = nullptr;
+
+	void onEnter() override;
+	void onExit() override;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
