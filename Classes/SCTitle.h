@@ -10,17 +10,23 @@ public:
     ~GameTitleLayer();
 
     bool init();
+
+	virtual void onEnter() override;
+	virtual void onExit() override;
     
     CREATE_FUNC(GameTitleLayer);
     
     void loadTitle();    
     
-    virtual void TouchesBegan(cocos2d::Set *pTouches, cocos2d::Event *pEvent);
-    virtual void TouchesMoved(cocos2d::Set *pTouches, cocos2d::Event *pEvent);
+	bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event) override;
+	void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event) override;
     
 private:
-    static void loadedTitleCharacter(cocos2d::Node* pSender);
-    static void loadedTitle(cocos2d::Node* pSender);
+    void loadedTitleCharacter();
+    void loadedTitle();
+
+private:
+	cocos2d::Sprite * m_touchLabel;
 };
 
 class GameTitleScene : public cocos2d::Scene

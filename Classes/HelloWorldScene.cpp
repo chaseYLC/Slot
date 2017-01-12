@@ -103,7 +103,7 @@ bool HelloWorld::init()
 }
 
 
-void HelloWorld::menuCloseCallback(Ref* pSender)
+void HelloWorld::menuCloseCallback(/*Ref* pSender*/)
 {
 	/*SND()->playBackgroundMusic(SoundPath::path(SoundPath::ST_BG_START), true);
 	SND()->setBackgroundMusicVolume(0.5);*/
@@ -151,7 +151,7 @@ void HelloWorld::asyncResourceCallback(cocos2d::Ref *obj)
 	if (_gTest)
 	{
 		actions = Sequence::create(
-			CallFuncN::create(this, SEL_CallFuncN(&HelloWorld::menuCloseCallback)),
+			CallFunc::create(CC_CALLBACK_0(HelloWorld::menuCloseCallback, this)),
 			NULL
 		);
 	}
@@ -159,7 +159,8 @@ void HelloWorld::asyncResourceCallback(cocos2d::Ref *obj)
 		actions = Sequence::create(
 			FadeIn::create(2),
 			FadeOut::create(1),
-			CallFuncN::create(this, SEL_CallFuncN(&HelloWorld::menuCloseCallback)),
+			//CallFuncN::create(this, SEL_CallFuncN(&HelloWorld::menuCloseCallback)),
+			CallFunc::create(CC_CALLBACK_0(HelloWorld::menuCloseCallback, this)),
 			NULL
 		);
 	}
