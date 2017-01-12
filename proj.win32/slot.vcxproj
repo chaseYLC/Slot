@@ -147,9 +147,15 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\AsyncResourceLoader.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\Classes\LAPlayEffect.cpp" />
+    <ClCompile Include="..\Classes\LAPlaySlot.cpp" />
+    <ClCompile Include="..\Classes\PlayerData.cpp" />
+    <ClCompile Include="..\Classes\SCPlay.cpp" />
     <ClCompile Include="..\Classes\SCTitle.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\Classes\SlotInfo.cpp" />
+    <ClCompile Include="..\Classes\SpriteNotifier.cpp" />
     <ClCompile Include="..\Classes\SystemConfig.cpp" />
     <ClCompile Include="..\Classes\TargetDeviceUtils.cpp" />
     <ClCompile Include="main.cpp" />
@@ -158,9 +164,15 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\AsyncResourceLoader.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\Classes\LAPlayEffect.h" />
+    <ClInclude Include="..\Classes\LAPlaySlot.h" />
+    <ClInclude Include="..\Classes\PlayerData.h" />
+    <ClInclude Include="..\Classes\SCPlay.h" />
     <ClInclude Include="..\Classes\SCTitle.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="..\Classes\SlotInfo.h" />
+    <ClInclude Include="..\Classes\SpriteNotifier.h" />
     <ClInclude Include="..\Classes\SystemConfig.h" />
     <ClInclude Include="..\Classes\TargetDeviceUtils.h" />
     <ClInclude Include="main.h" />
