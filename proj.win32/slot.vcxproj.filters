@@ -27,6 +27,12 @@
     <ClCompile Include="..\Classes\SystemConfig.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\TargetDeviceUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\SCTitle.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -44,10 +50,21 @@
     <ClInclude Include="..\Classes\SystemConfig.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\TargetDeviceUtils.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\SCTitle.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
       <Filter>resource</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resources\company_logo.png">
+      <Filter>resource</Filter>
+    </Image>
   </ItemGroup>
 </Project>
